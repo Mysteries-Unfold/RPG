@@ -29,7 +29,7 @@ function chooseclass_load()             --load the classes
   warrior.selected        = false       --indicates if the user is selecting it      
   table.insert(classes, warrior)        --adds the class to the classes table
   
-  mage                    = {}          --mage class
+  mage                    = {}          --mage class 
   mage.image              = "none"
   mage.hp                 = 10          --hp
   mage.atk                = 3           --atk
