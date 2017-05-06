@@ -33,7 +33,7 @@ function chooseclass_load()             --load the classes
   mage.image              = "none"
   mage.hp                 = 10          --hp
   mage.atk                = 3           --atk
-  mage.spatk              = 7           --sp atk
+  mage.spatk              = 7           --sp atk 
   mage.def                = 5           --def
   mage.spd                = 3           --spd
   mage.selected           = false       --indicates if the user is selecting it
