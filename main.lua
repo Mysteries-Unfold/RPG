@@ -1,17 +1,21 @@
-
-
 require('mainmenu')
 require('phase')
-require('chooseclass')
-
-
+require('player')
+require('phase')
+require('objectimage')
+require('SFX')
+require('playericons')
 function love.load()
-
-	mainMenu, chooseClass, inGame = 0, 1, 2
+  -- icones de jogadores, futuramente spritesheets
+  icons.load()
+  -- efeitos sonoros
+  SFX.load()
+  -- fundos e objetos
+  objeto.load()
+  --estados de jogo/fases
+	mainMenu, inGame = 0, 1
 	gameState = 0 
-
 	phase_load()
-	chooseclass_load()
 
 end
 
@@ -37,10 +41,6 @@ function love.draw()
 
 		mainmenu_draw()
 
-	elseif gameState == chooseClass then
-
-		chooseclass_draw() 
-
 	elseif gameState == inGame then
 
 		phase_draw()
@@ -56,12 +56,8 @@ function love.keypressed(key)
 
 		mainmenu_select(key)
 
-	elseif gameState == chooseClass then
-
-		chooseclass_select(key)
-
 	end
-
+  --Volta ao menu
 	if key == 'escape' and gameState ~= mainMenu then
 
 			gameState = 0

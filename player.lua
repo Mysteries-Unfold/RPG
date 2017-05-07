@@ -1,8 +1,8 @@
 
-
+player = {}
 function player_load()
 
-	player = {}
+	
 
 	player.x 	= love.graphics.getWidth() / 2 - 32
 	player.y 	= love.graphics.getHeight() / 2 - 32
@@ -51,8 +51,8 @@ end
 
 
 function player_draw()
-	
-	love.graphics.setColor(0, 255, 0)
-	love.graphics.rectangle('fill', player.x, player.y, 32, 32)
+  love.graphics.setColor(255,255,255)
+	love.graphics.draw(player.image,player.icon,player.x,player.y,0,0.13,0.13)
+  
 
 end
