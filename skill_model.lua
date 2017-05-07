@@ -8,7 +8,7 @@ skill.cost               = 0       --mp cost of the skill,
 skill.desc               = ""      --description of the skill to show the user
 skill.anim               = nil     --the animation to be used 
 skill.turn_effect        = 1       --how many turns the effect will be used, for atk and sp atk, this will be 1
-skill.charge = {}
+skill.charge             = {}      --skill chage, if the skill doenst have one, this value will be false
 
 skill.charge.name        =         --the name of the charge skill
 skill.charge.damage      = 0       --charge extra damage, the total damage will be damage + charge.damage
