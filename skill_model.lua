@@ -6,7 +6,7 @@ skill.effect             = "none"  --buff, debuff effect, if atk or spatk, effec
 skill.target             = ""      --empty string, the encontro mechanics set the target
 skill.cost               = 0       --mp cost of the skill, 
 skill.desc               = ""      --description of the skill to show the user
-skill.anim               = nil     --the animation to be used
+skill.anim               = nil     --the animation to be used 
 skill.turn_effect        = 1       --how many turns the effect will be used, for atk and sp atk, this will be 1
 skill.charge = {}
 
