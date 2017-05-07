@@ -2,14 +2,16 @@
 
 require('mainmenu')
 require('phase')
+require('chooseclass')
 
 
 function love.load()
 
-	mainMenu, inGame = 0, 1
+	mainMenu, chooseClass, inGame = 0, 1, 2
 	gameState = 0 
 
 	phase_load()
+	chooseclass_load()
 
 end
 
@@ -35,6 +37,10 @@ function love.draw()
 
 		mainmenu_draw()
 
+	elseif gameState == chooseClass then
+
+		chooseclass_draw() 
+
 	elseif gameState == inGame then
 
 		phase_draw()
@@ -49,6 +55,10 @@ function love.keypressed(key)
 	if gameState == mainMenu then
 
 		mainmenu_select(key)
+
+	elseif gameState == chooseClass then
+
+		chooseclass_select(key)
 
 	end
 
