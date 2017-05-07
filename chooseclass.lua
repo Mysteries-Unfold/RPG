@@ -82,7 +82,7 @@ function chooseclass_select(key)                             --handle keyboard i
     
     classes[classes.selected_index].selected = true       --set the new selected class to true
   
-  elseif key=='enter' then                                --if the user selected the class, start the game
+  elseif key == 'return' then                             --if the user selected the class, start the game
     
     gameState = 2
     
@@ -132,4 +132,4 @@ function chooseclass_draw()                              --draw
   end
 
 end
-Contact GitHub 
+
