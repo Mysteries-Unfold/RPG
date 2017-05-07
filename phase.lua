@@ -1,15 +1,15 @@
 
 
 require('player')
-	phase = {}
 
-function phase_load()
+phase = {}
 
-	player_load()
+
+function phase.load()
+
+	player.load()
 	
 	phase1, phase2 = 1, 2
-
-
 
 	phase.state = 1
 
@@ -28,16 +28,16 @@ function phase_load()
 end
 
 -- Todas as colisões
-function phase_update(dt)
+function phase.update(dt)
 
-	player_update(dt)
+	player.update(dt)
 
 	if phase.state == phase1 then
 
 		if player.w > ext.x and player.y < ext.h then
 
 			phase.state = 2
-      cachang:play()
+     		cachang:play()
 
 		end
 
@@ -86,7 +86,7 @@ function phase_update(dt)
 end
 
 
-function phase_draw()
+function phase.draw()
 
 	if phase.state == phase1 then 
 
@@ -115,7 +115,7 @@ function phase_draw()
 
 	end
 
-	player_draw()
+	player.draw()
 
 end
 

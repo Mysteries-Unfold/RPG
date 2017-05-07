@@ -1,3 +1,5 @@
+
+
 require('mainmenu')
 require('phase')
 require('player')
@@ -5,6 +7,9 @@ require('phase')
 require('objectimage')
 require('SFX')
 require('playericons')
+require('chooseclass')
+
+
 function love.load()
 	-- icones de jogadores, futuramente spritesheets
 	icons.load()
@@ -18,9 +23,8 @@ function love.load()
 	--estados de jogo/fases
 	mainMenu, chooseClass, inGame = 0, 1, 2
 	gameState = 0 
-	phase_load()
 	chooseclass.load()
-
+	phase.load()
 
 end
 
@@ -29,11 +33,11 @@ function love.update(dt)
 
 	if gameState == mainMenu then 
 
-		phase_load()
+		phase.load()
 
 	elseif gameState == inGame then
 
-		phase_update(dt)
+		phase.update(dt)
 
 	end
 
@@ -44,7 +48,7 @@ function love.draw()
 
 	if gameState == mainMenu then
 
-		mainmenu_draw()
+		mainmenu.draw()
 		
 	elseif gameState == chooseClass then
 		
@@ -52,7 +56,7 @@ function love.draw()
 
 	elseif gameState == inGame then
 
-		phase_draw()
+		phase.draw()
 
 	end
 
@@ -63,11 +67,12 @@ function love.keypressed(key)
 
 	if gameState == mainMenu then
 
-		mainmenu_select(key)
+		mainmenu.select(key)
 	
 	elseif gameState == chooseClass then
 
-		chooseclass.select(key)	
+		chooseclass.keypressed(key)	
+		chooseclass.keyEnter(key)
 		
 	end
   	
