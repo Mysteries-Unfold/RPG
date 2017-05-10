@@ -1,15 +1,15 @@
 
 
 require('player')
+	phase = {}
 
-phase = {}
-
-
-function phase.load()
-
-	player.load()
+function phase_load()
+  title_font = love.graphics.newFont(40)
+	player_load()
 	
 	phase1, phase2 = 1, 2
+
+
 
 	phase.state = 1
 
@@ -28,16 +28,16 @@ function phase.load()
 end
 
 -- Todas as colisões
-function phase.update(dt)
+function phase_update(dt)
 
-	player.update(dt)
+	player_update(dt)
 
 	if phase.state == phase1 then
 
 		if player.w > ext.x and player.y < ext.h then
 
 			phase.state = 2
-     		cachang:play()
+      cachang:play()
 
 		end
 
@@ -86,7 +86,7 @@ function phase.update(dt)
 end
 
 
-function phase.draw()
+function phase_draw()
 
 	if phase.state == phase1 then 
 
@@ -115,7 +115,7 @@ function phase.draw()
 
 	end
 
-	player.draw()
+	player_draw()
 
 end
 

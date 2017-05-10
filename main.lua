@@ -1,5 +1,3 @@
-
-
 require('mainmenu')
 require('phase')
 require('player')
@@ -8,36 +6,34 @@ require('objectimage')
 require('SFX')
 require('playericons')
 require('chooseclass')
-
-
+require('currentstats')
 function love.load()
-	-- icones de jogadores, futuramente spritesheets
-	icons.load()
-	
-	-- efeitos sonoros
-	SFX.load()
-	
-	-- fundos e objetos
-	objeto.load()
-	
-	--estados de jogo/fases
-	mainMenu, chooseClass, inGame = 0, 1, 2
+  -- icones de jogadores, futuramente spritesheets
+  icons.load()
+  -- fonte padrão chamada em lugares onde ela é necessária
+  default_font=love.graphics.newFont(14)
+  -- efeitos sonoros
+  SFX.load()
+  -- fundos e objetos
+  objeto.load()
+  --estados de jogo/fases
+	mainMenu, chooseclass.state, inGame = 0, 1 ,2
 	gameState = 0 
-	chooseclass.load()
-	phase.load()
+	phase_load()
+  chooseclass.load()
 
 end
 
 
 function love.update(dt)
 
-	if gameState == mainMenu then 
-
-		phase.load()
-
+	if gameState == mainMenu then
+    
+  elseif gameState == chooseclass.state then
+    
 	elseif gameState == inGame then
 
-		phase.update(dt)
+		phase_update(dt)
 
 	end
 
@@ -47,16 +43,17 @@ end
 function love.draw()
 
 	if gameState == mainMenu then
-
-		mainmenu.draw()
-		
-	elseif gameState == chooseClass then
-		
-		chooseclass.draw()
-
+    love.graphics.setFont(default_font)
+		mainmenu_draw()
+    
+	elseif gameState == chooseclass.state then
+    love.graphics.setFont(chooseclass.font) --set the font the default font with the size 40
+    chooseclass.draw()
+    
 	elseif gameState == inGame then
-
-		phase.draw()
+    love.graphics.setFont(default_font)
+		phase_draw()
+    currentstatsHUD()
 
 	end
 
@@ -67,19 +64,19 @@ function love.keypressed(key)
 
 	if gameState == mainMenu then
 
-		mainmenu.select(key)
+		mainmenu_select(key)
+    
+  elseif gameState == chooseclass.state then
+    
+    chooseclass.keypressed(key)
+    chooseclass.keyEnter(key)
 	
-	elseif gameState == chooseClass then
-
-		chooseclass.keypressed(key)	
-		chooseclass.keyEnter(key)
-		
-	end
-  	
-	--Volta ao menu
+  end
+  --Volta ao menu
 	if key == 'escape' and gameState ~= mainMenu then
 
-		gameState = 0
+			gameState = 0
+      love.load()
 
 	end
 

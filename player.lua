@@ -1,9 +1,8 @@
 
-
 player = {}
+function player_load()
 
-
-function player.load()
+	
 
 	player.x 	= love.graphics.getWidth() / 2 - 32
 	player.y 	= love.graphics.getHeight() / 2 - 32
@@ -17,7 +16,7 @@ function player.load()
 end
 
 
-function player.update(dt)
+function player_update(dt)
 
 	player.w = player.x + 32 -- Player.x + comprimento de player
 	player.h = player.y + 32 -- Player.y + altura de player
@@ -51,9 +50,9 @@ function player.update(dt)
 end
 
 
-function player.draw()
-  	
-  	love.graphics.setColor(255,255,255)
-		love.graphics.draw(player.image,player.icon,player.x,player.y,0,0.13,0.13)
+function player_draw()
+  love.graphics.setColor(255,255,255)
+	love.graphics.draw(player.image,player.icon,player.x,player.y,0,0.05,0.03)
+  
 
 end
