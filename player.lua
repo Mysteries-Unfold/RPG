@@ -1,8 +1,11 @@
 
-player = {}
-function player_load()
 
-	
+player = {}
+
+
+function player.load()
+  
+  	player.skills = {}
 
 	player.x 	= love.graphics.getWidth() / 2 - 32
 	player.y 	= love.graphics.getHeight() / 2 - 32
@@ -16,7 +19,7 @@ function player_load()
 end
 
 
-function player_update(dt)
+function player.update(dt)
 
 	player.w = player.x + 32 -- Player.x + comprimento de player
 	player.h = player.y + 32 -- Player.y + altura de player
@@ -50,7 +53,8 @@ function player_update(dt)
 end
 
 
-function player_draw()
+function player.draw()
+	
   love.graphics.setColor(255,255,255)
 	love.graphics.draw(player.image,player.icon,player.x,player.y,0,0.05,0.03)
   

@@ -13,48 +13,40 @@ function chooseclass.load()             --load the classes
   archer                  = {}          --archer class
   archer.image            = love.graphics.newImage("iconplayer/archer.jpg") 
   archer.hp               = 4           --hp
-  archer.mp               = 2
   archer.atk              = 10          --atk
   archer.spatk            = 5           --sp atk
   archer.def              = 2           --def
   archer.spd              = 7           --spd
-  archer.spdef            = 0           --sp def
   archer.selected         = true        --indicates if the user is selecting it
   table.insert(classes, archer)         --adds the class to the classes table  
   
   warrior                 = {}          --warrior class
   warrior.image           = love.graphics.newImage("iconplayer/saber.jpg")
   warrior.hp              = 5           --hp
-  warrior.mp              = 1
   warrior.atk             = 8           --atk
   warrior.spatk           = 3           --sp atk
   warrior.def             = 10          --def
   warrior.spd             = 2           --spd
-  warrior.spdef           = 0           --sp def
   warrior.selected        = false       --indicates if the user is selecting it      
   table.insert(classes, warrior)        --adds the class to the classes table
   
   mage                    = {}          --mage class 
   mage.image              = love.graphics.newImage("iconplayer/sorcerer.jpg")
   mage.hp                 = 7           --hp
-  mage.hp                 = 10 
   mage.atk                = 3           --atk
   mage.spatk              = 10          --sp atk 
   mage.def                = 5           --def
   mage.spd                = 3           --spd
-  mage.spdef              = 0           --sp def
   mage.selected           = false       --indicates if the user is selecting it
   table.insert(classes, mage)           --adds the class to the classes table
   
   thief                   = {}          --thief class
   thief.image             = love.graphics.newImage("iconplayer/thief.jpg")
   thief.hp                = 3           --hp
-  thief.mp                = 1
   thief.atk               = 7           --atk
   thief.spatk             = 2           --sp atk
   thief.def               = 6           --def
   thief.spd               = 10          --spd
-  thief.spdef             = 0           --sp def
   thief.selected          = false       --indicates if the user is selecting it
   table.insert(classes, thief)          --adds the class to the classes table
   
@@ -86,7 +78,6 @@ function chooseclass.keyEnter(key)
       player.image = warrior.image    --load the warrior image
       
     end  
-    player.currentstatsload()
     player.icon=love.graphics.newQuad(50,100,650,1090,player.image:getDimensions())
   end
 end
@@ -143,21 +134,20 @@ function chooseclass.draw()                              --draw
   love.graphics.setFont(chooseclass.stats_font)          --set font
   love.graphics.setColor(255, 255, 255)                  --set color to white
   
-  love.graphics.printf("HP: "..tostring(class.hp), stats_x, (height*2/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")          -- draw the hp text
-  love.graphics.rectangle("fill", stats_x, height*2/10, (width-stats_x-(width/100))*(class.hp/10), height/50)                                 -- draw the hp stat
+  love.graphics.printf("HP: "..tostring(class.hp), stats_x, (height*2/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*2/10, (width-stats_x-(width/100))*(class.hp/10), height/50)
   
-  love.graphics.printf("ATK: "..tostring(class.atk), stats_x, (height*3/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")        -- draw the atk text
-  love.graphics.rectangle("fill", stats_x, height*3/10, (width-stats_x-(width/100))*(class.atk/10), height/50)                                -- draw the atk stat 
+  love.graphics.printf("ATK: "..tostring(class.atk), stats_x, (height*3/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*3/10, (width-stats_x-(width/100))*(class.atk/10), height/50)
   
-  love.graphics.printf("SP ATK: "..tostring(class.spatk), stats_x, (height*4/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")   -- draw the sp atk text
-  love.graphics.rectangle("fill", stats_x, height*4/10, (width-stats_x-(width/100))*(class.spatk/10), height/50)                              -- draw the sp atk stat 
+  love.graphics.printf("SP ATK: "..tostring(class.spatk), stats_x, (height*4/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*4/10, (width-stats_x-(width/100))*(class.spatk/10), height/50)
   
-  love.graphics.printf("DEF: "..tostring(class.def), stats_x, (height*5/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")        -- draw the def text
-  love.graphics.rectangle("fill", stats_x, height*5/10, (width-stats_x-(width/100))*(class.def/10), height/50)                                -- draw the def stat
+  love.graphics.printf("DEF: "..tostring(class.def), stats_x, (height*5/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*5/10, (width-stats_x-(width/100))*(class.def/10), height/50)
   
-  love.graphics.printf("SPD: "..tostring(class.spd), stats_x, (height*6/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")        -- draw the spd text
-  love.graphics.rectangle("fill", stats_x, height*6/10, (width-stats_x-(width/100))*(class.spd/10), height/50)                                -- draw the spd stat
-  
+  love.graphics.printf("SPD: "..tostring(class.spd), stats_x, (height*6/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*6/10, (width-stats_x-(width/100))*(class.spd/10), height/50)
   
   for index=1, #classes do                               --draw the options for each class
     
@@ -190,3 +180,4 @@ function chooseclass.draw()                              --draw
   end
 
 end
+--Contact GitHub 

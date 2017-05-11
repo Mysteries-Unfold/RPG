@@ -1,6 +1,9 @@
 
 
-function mainmenu_draw()
+mainmenu = {}
+
+
+function mainmenu.draw()
 
 	love.graphics.setColor(255, 255, 255)
 	love.graphics.print('PROJECT RPG', love.graphics.getWidth() / 2 - 155, 64, nil, 4)
@@ -11,7 +14,7 @@ function mainmenu_draw()
 end
 
 
-function mainmenu_select(key)
+function mainmenu.select(key)
 
 	if key == 'return' then 
 

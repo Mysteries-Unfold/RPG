@@ -1,0 +1,3 @@
+--notas
+--cores diferentes paras danos de tipos diferentes, roxo sp atk, vermelho para atk
+--escada no centro do andar, liberada apos derrtoar o boss do andar
