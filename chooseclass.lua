@@ -134,21 +134,20 @@ function chooseclass.draw()                              --draw
   love.graphics.setFont(chooseclass.stats_font)          --set font
   love.graphics.setColor(255, 255, 255)                  --set color to white
   
-  love.graphics.printf("HP: "..tostring(class.hp), stats_x, (height*2/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")          -- draw the hp text
-  love.graphics.rectangle("fill", stats_x, height*2/10, (width-stats_x-(width/100))*(class.hp/10), height/50)                                 -- draw the hp stat
+  love.graphics.printf("HP: "..tostring(class.hp), stats_x, (height*2/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*2/10, (width-stats_x-(width/100))*(class.hp/10), height/50)
   
-  love.graphics.printf("ATK: "..tostring(class.atk), stats_x, (height*3/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")        -- draw the atk text
-  love.graphics.rectangle("fill", stats_x, height*3/10, (width-stats_x-(width/100))*(class.atk/10), height/50)                                -- draw the atk stat 
+  love.graphics.printf("ATK: "..tostring(class.atk), stats_x, (height*3/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*3/10, (width-stats_x-(width/100))*(class.atk/10), height/50)
   
-  love.graphics.printf("SP ATK: "..tostring(class.spatk), stats_x, (height*4/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")   -- draw the sp atk text
-  love.graphics.rectangle("fill", stats_x, height*4/10, (width-stats_x-(width/100))*(class.spatk/10), height/50)                              -- draw the sp atk stat 
+  love.graphics.printf("SP ATK: "..tostring(class.spatk), stats_x, (height*4/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*4/10, (width-stats_x-(width/100))*(class.spatk/10), height/50)
   
-  love.graphics.printf("DEF: "..tostring(class.def), stats_x, (height*5/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")        -- draw the def text
-  love.graphics.rectangle("fill", stats_x, height*5/10, (width-stats_x-(width/100))*(class.def/10), height/50)                                -- draw the def stat
+  love.graphics.printf("DEF: "..tostring(class.def), stats_x, (height*5/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*5/10, (width-stats_x-(width/100))*(class.def/10), height/50)
   
-  love.graphics.printf("SPD: "..tostring(class.spd), stats_x, (height*6/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")        -- draw the spd text
-  love.graphics.rectangle("fill", stats_x, height*6/10, (width-stats_x-(width/100))*(class.spd/10), height/50)                                -- draw the spd stat
-  
+  love.graphics.printf("SPD: "..tostring(class.spd), stats_x, (height*6/10)-chooseclass.stats_font:getHeight(), width-stats_x, "left")
+  love.graphics.rectangle("fill", stats_x, height*6/10, (width-stats_x-(width/100))*(class.spd/10), height/50)
   
   for index=1, #classes do                               --draw the options for each class
     

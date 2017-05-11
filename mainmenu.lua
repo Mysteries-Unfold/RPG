@@ -16,7 +16,6 @@ function mainmenu_select(key)
 	if key == 'return' then 
 
 		gameState = 1
-
 	end
 
 	if key == 'escape' then
