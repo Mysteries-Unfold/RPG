@@ -3,8 +3,15 @@ do
   local phase1           = {}
   
   local enemy1           = {}           --Enemy 1
-  enemy1.image           = love.graphics.newImage("iconplayer/otaco.png")
+  enemy1.index = 1
+  enemy1.alive_image     = love.graphics.newImage("iconplayer/otaco.png")
+  enemy1.dead_image      = love.graphics.newImage("iconplayer/rip.png")
   enemy1.hp              = 10           --hp
+  enemy1.sx               = 1
+  enemy1.sy               = 1
+  enemy1.x                = 290
+  enemy1.y                = 400
+  enemy1.alive           = true
   enemy1.atk             = 7            --atk
   enemy1.spatk           = 1            --sp atk
   enemy1.def             = 4            --def

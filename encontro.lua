@@ -33,6 +33,8 @@ encontro.setPlayers = function (jogador, inimigo, gameState)--players of the enc
   player, enemy      = jogador, inimigo  --set player and anemy to jogador and inimigo, so it can be used anywhere in here
   previous_gameState = gameState                      -- save the gameState before ente the battle
   active_background  = background[gameState]
+  local w, h = enemy.alive_image:getWidth(), enemy.alive_image:getHeight()
+  enemy.w, enemy.h  = w, h
   
 end
   
@@ -50,29 +52,35 @@ encontro.keypressed = function (key)
     
     if key=="return" or key=="enter" then
       
-      if actions[selected_action][1] == "Fight" then      --if the user choose to fight
+      if actions[selected_action][1] == "Fight" then    --if the user choose to fight
         
-        encontro.state = chooseSkill                   --change state choose skill
+        encontro.state = chooseSkill                    --change state choose skill
         
-      elseif actions[selected_action][1] == "Item" then      --if the user choose to fight
+      elseif actions[selected_action][1] == "Item" then --if the user choose to fight
         
-        encontro.state = inBag                   --change state choose skill
+        encontro.state = inBag                          --change state choose skill
+        
+      elseif actions[selected_action][1] == "Flee" then --if the user choose to fight
+        
+        --do the quick time event
+        --...
+        endBattle(true)                            --end battle
         
       end
       
-    elseif (key == "right") and (selected_action==1) then
+    elseif (key == "d") and (selected_action==1) then
       
       selected_action = selected_action + 1  -- add the index by 1, so it will move to the next one
       
-    elseif (key == "left") and (selected_action==2) then
+    elseif (key == "a") and (selected_action==2) then
     
       selected_action = selected_action - 1  -- subtracts the index by 1, so it will move to the previous one
       
-    elseif (key == "up") and (selected_action==3) then
+    elseif (key == "w") and (selected_action==3) then
       
       selected_action = selected_action - 2  -- add the index by 2, so it will move upwards
       
-    elseif (key == "down") and (selected_action==1) then
+    elseif (key == "s") and (selected_action==1) then
     
       selected_action = selected_action + 2  -- subtracts the index by 2, so it will move downwards
       
@@ -83,12 +91,14 @@ encontro.keypressed = function (key)
     if key == "return" then                  -- if the user choose the skill
     
       encontro.state = inBattle              -- change the state to battle
+      
+      endBattle(false)
     
-    elseif (key == "down") and (selected_skill < 6) then
+    elseif (key == "s") and (selected_skill < 6) then
       
       selected_skill = selected_skill + 1
       
-    elseif (key == "up") and (selected_skill > 1) then
+    elseif (key == "w") and (selected_skill > 1) then
       
       selected_skill = selected_skill - 1
       
@@ -98,10 +108,20 @@ encontro.keypressed = function (key)
   
 end
 
-endBattle = function ()
+endBattle = function (flee)
+  
+  --do end battle things...
+  if flee then                              --check if the battle ended because the player fled
+    player.chicken = true
+  else
+    local enemytt = enemies["phase1"][1]
+    enemies["phase1"][1].alive_image, enemies["phase1"][1].dead_image = enemies["phase1"][1].dead_image, enemies["phase1"][1].alive_image
+    enemies["phase1"][1].alive = false
+  end
   
   player, enemy      = nil, nil             --resets player anf enemy values
-  gameState          = previous_gameState   --change the gameState
+  
+  gameState          = 2                    --change the gameState
   
 end
 
@@ -114,6 +134,8 @@ encontro.draw = function ()
   ----------------------------------------BATTLE------------------------------------------------------------
   
   love.graphics.draw(active_background, w/4, 0, 0, 3/4, 3/4) -- draw the battle background
+  
+  love.graphics.draw(enemy.alive_image, (w*3/8)+(w/4), h/6, 0, ((h*12/24)/(enemy.h)), ((h*12/24)/(enemy.h)))
   
   
   -------------------------------------CHOOSE ACTION--------------------------------------------------------

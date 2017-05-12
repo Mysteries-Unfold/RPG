@@ -7,6 +7,7 @@ require('SFX')
 require('playericons')
 require('chooseclass')
 require('encontro')
+require('enemies')
 
 function love.load()
   --
@@ -48,7 +49,7 @@ end
 
 
 function love.draw()
-	if gameState == mainMenu then
+  if gameState == mainMenu then
     love.graphics.setFont(default_font)
 		mainmenu_draw()
     

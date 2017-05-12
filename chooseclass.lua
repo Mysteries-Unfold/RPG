@@ -85,7 +85,7 @@ end
 function chooseclass.keypressed(key)
   
   --handle keyboard input, move selecte class, choose the class
-  if (key == 'right') and (classes.selected_index<4) then    --checks if the user is changing the selected class, and if its possible
+  if (key == 'd') and (classes.selected_index<4) then    --checks if the user is changing the selected class, and if its possible
     
     classes.selected_index    = classes.selected_index + 1   --adds the index, so it will move the selected to the right
     
@@ -97,7 +97,7 @@ function chooseclass.keypressed(key)
     
     classes[classes.selected_index].selected = true       --set the new selected class to true
     
-  elseif (key == 'left') and (classes.selected_index>1) then --checks if the user is changing the selected class, and if its possible
+  elseif (key == 'a') and (classes.selected_index>1) then --checks if the user is changing the selected class, and if its possible
     
     classes.selected_index    = classes.selected_index - 1   --subtracts the index, so it will move the selected to the left
     
