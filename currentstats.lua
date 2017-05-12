@@ -39,7 +39,7 @@ function player.currentstatsload()
       
       player.hpMAX  =warrior.hp
       player.hp     =player.hpMAX
-      player.mpMAX  =warrior.mpMAX
+      player.mpMAX  =warrior.mp
       player.mp     =player.mpMAX
       player.atk    =warrior.atk
       player.spatk  =warrior.spatk
@@ -57,6 +57,7 @@ function currentstatsHUD()
   HUD.escala=10
   love.graphics.setColor(255, 255, 255)                  --set color to white
   local width, height = love.graphics:getWidth(), love.graphics:getHeight()
+  love.graphics.setFont(default_font)
   love.graphics.printf("HP: ".. player.hpMAX .. "/" .. player.hp, HUD.x, (HUD.y*1.5/10)-chooseclass.stats_font:getHeight(), width-HUD.x)
   
   love.graphics.setColor(55,55,55)
@@ -65,7 +66,7 @@ function currentstatsHUD()
   love.graphics.rectangle("fill",HUD.x,(HUD.y*2/10)-chooseclass.stats_font:getHeight(),player.hp*HUD.escala,10)
   love.graphics.setColor(255,255,255)
   
-  
+  love.graphics.setFont(default_font)
   love.graphics.printf("MP: ".. player.hpMAX .. "/" .. player.hp, HUD.x, (HUD.y*2.5/10)-chooseclass.stats_font:getHeight(), width-HUD.x)
   
   love.graphics.setColor(55,55,55)
@@ -73,6 +74,7 @@ function currentstatsHUD()
   love.graphics.setColor(0,0,255)
   love.graphics.rectangle("fill",HUD.x,(HUD.y*3/10)-chooseclass.stats_font:getHeight(),player.mp*HUD.escala,10)
   love.graphics.setColor(255,255,255)
+  
   
   love.graphics.printf("ATK: ".. (player.atk), HUD.x, (HUD.y*3.5/10)-chooseclass.stats_font:getHeight(), width-HUD.x)
   

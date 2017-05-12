@@ -68,6 +68,7 @@ function love.draw()
 
     love.graphics.setFont(default_font)
 		phase.draw()
+    currentstatsHUD()
     
   elseif gameState == Encontro then
 

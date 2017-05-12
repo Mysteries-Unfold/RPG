@@ -13,6 +13,7 @@ function chooseclass.load()             --load the classes
   archer                  = {}          --archer class
   archer.image            = love.graphics.newImage("iconplayer/archer.jpg") 
   archer.hp               = 4           --hp
+  archer.mp               = 2           --mp
   archer.atk              = 10          --atk
   archer.spatk            = 5           --sp atk
   archer.def              = 2           --def
@@ -23,6 +24,7 @@ function chooseclass.load()             --load the classes
   warrior                 = {}          --warrior class
   warrior.image           = love.graphics.newImage("iconplayer/saber.jpg")
   warrior.hp              = 5           --hp
+  warrior.mp              = 1           --mp
   warrior.atk             = 8           --atk
   warrior.spatk           = 3           --sp atk
   warrior.def             = 10          --def
@@ -33,6 +35,7 @@ function chooseclass.load()             --load the classes
   mage                    = {}          --mage class 
   mage.image              = love.graphics.newImage("iconplayer/sorcerer.jpg")
   mage.hp                 = 7           --hp
+  mage.mp                 = 10          --mp
   mage.atk                = 3           --atk
   mage.spatk              = 10          --sp atk 
   mage.def                = 5           --def
@@ -43,6 +46,7 @@ function chooseclass.load()             --load the classes
   thief                   = {}          --thief class
   thief.image             = love.graphics.newImage("iconplayer/thief.jpg")
   thief.hp                = 3           --hp
+  thief.mp                = 1           --mp
   thief.atk               = 7           --atk
   thief.spatk             = 2           --sp atk
   thief.def               = 6           --def
@@ -78,6 +82,7 @@ function chooseclass.keyEnter(key)
       player.image = warrior.image    --load the warrior image
       
     end  
+    player.currentstatsload()
     player.icon=love.graphics.newQuad(50,100,650,1090,player.image:getDimensions())
   end
 end
