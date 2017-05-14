@@ -10,6 +10,9 @@ require('encontro')
 require('enemies')
 require('currentstats')
 require('pause')
+require('ANIMsample')
+require('ANIMenemies')
+require('ANIMarmed')
 function love.load()
   -- icones de jogadores, futuramente spritesheets
   icons.load()
@@ -25,6 +28,10 @@ function love.load()
 	phase_load()
   chooseclass.load()
   pause.load()
+  
+  --PROTOTIPO DE ANIMAÇÃO
+  ANImy.load()
+  animasample.load()
 
 end
 
@@ -41,8 +48,16 @@ function love.update(dt)
 
 		phase_update(dt)
     
+    
+    animasample.update(dt)
+    
   elseif gameState == Encontro then
+    --PROTOTIPO DE ANIMAÇÃO
+    ANImy.update(dt)
+    
 
+    direita:update(dt)
+    
 	end
 
 end
@@ -61,11 +76,26 @@ function love.draw()
     love.graphics.setFont(default_font)
 		phase_draw()
     currentstatsHUD()
+
+    
+    animasample.draw()
     
   elseif gameState == Encontro then
+    
     love.graphics.setFont(default_font)
+    
+    --CAIXAS
 		encontro.draw()
+    
+    --INIMIGO PROTOTIPO DE ANIMAÇÃO
+    ANImy.draw()
+    
+    
+    --BARRAS DE HP/MP
     battleHUD()
+    
+    --JOGADOR PROTOTIPO DE ANIMAÇÃO
+    animasample.drawB()
     
   end
   

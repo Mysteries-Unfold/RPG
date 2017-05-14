@@ -135,7 +135,7 @@ encontro.draw = function ()
   
   love.graphics.draw(active_background, w/4, 0, 0, 3/4, 3/4) -- draw the battle background
   
-  love.graphics.draw(enemy.alive_image, (w*3/8)+(w/4), h/6, 0, ((h*12/24)/(enemy.h)), ((h*12/24)/(enemy.h)))
+  --love.graphics.draw(enemy.alive_image, (w*3/8)+(w/4), h/6, 0, ((h*12/24)/(enemy.h)), ((h*12/24)/(enemy.h)))
   
   
   -------------------------------------CHOOSE ACTION--------------------------------------------------------

@@ -68,8 +68,11 @@ function player_draw()
   love.graphics.setColor(255,255,255)
   if player.chicken then
     love.graphics.draw(player.chicken_image,player.icon,player.x,player.y,0,0.05,0.02)
+  
   else
-    love.graphics.draw(player.image,player.icon,player.x,player.y,0,0.05,0.03)
+    
+    --love.graphics.draw(player.image,player.icon,player.x,player.y,0,0.05,0.03)
+  
   end
 
 end
