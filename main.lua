@@ -13,6 +13,7 @@ require('pause')
 require('ANIMsample')
 require('ANIMenemies')
 require('ANIMarmed')
+require('hitboxer')
 function love.load()
   -- icones de jogadores, futuramente spritesheets
   icons.load()
@@ -32,6 +33,10 @@ function love.load()
   --PROTOTIPO DE ANIMAÇÃO
   ANImy.load()
   animasample.load()
+  
+  --HITBOX
+  add_tile(x,y,type)
+  read_map()
 
 end
 
@@ -47,7 +52,7 @@ function love.update(dt)
 	elseif gameState == inGame then
 
 		phase_update(dt)
-    
+    hitboxer.update(dt)
     
     animasample.update(dt)
     
@@ -76,7 +81,7 @@ function love.draw()
     love.graphics.setFont(default_font)
 		phase_draw()
     currentstatsHUD()
-
+    hitboxer.draw()
     
     animasample.draw()
     
@@ -123,7 +128,6 @@ function love.keypressed(key)
 		mainmenu_select(key)
     
   elseif gameState == chooseclass.state and not pause.state then
-    
     chooseclass.keypressed(key)
     chooseclass.keyEnter(key)
     

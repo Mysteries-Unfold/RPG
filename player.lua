@@ -41,21 +41,15 @@ function player_update(dt)
 
 		player.y = player.y - player.uVel * dt
 
-	end
-
-	if love.keyboard.isDown('s') then
+	elseif love.keyboard.isDown('s') then
 
 		player.y = player.y + player.dVel * dt
 
-	end
-
-	if love.keyboard.isDown('d') then
+	elseif love.keyboard.isDown('d') then
 
 		player.x = player.x + player.rVel * dt
 
-	end
-
-	if love.keyboard.isDown('a') then
+	elseif love.keyboard.isDown('a') then
 
 		player.x = player.x - player.lVel * dt
 

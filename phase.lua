@@ -50,7 +50,7 @@ function phase_update(dt)
       gameState = 3
      
     end
-
+   
 		if player.w > ext.x and player.y < ext.h then
 
 			phase.state = 2
@@ -59,7 +59,7 @@ function phase_update(dt)
 		end
 
 	end
-
+ --[[
 	if player.y < phase.y then
 
 		player.uVel = 0
@@ -98,7 +98,7 @@ function phase_update(dt)
 
 		player.lVel = player.vel
 
-	end
+	end]]
 
 end
 
