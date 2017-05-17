@@ -34,9 +34,11 @@ function love.load()
   ANImy.load()
   animasample.load()
   
-  --HITBOX
-  add_tile(x,y,type)
-  read_map()
+  
+  
+  --hitbox
+  hitboxer.load()
+  
 
 end
 
@@ -52,8 +54,15 @@ function love.update(dt)
 	elseif gameState == inGame then
 
 		phase_update(dt)
-    hitboxer.update(dt)
     
+    
+    
+    
+    --hitbox
+    hitboxer.update()
+    
+    
+    --animação
     animasample.update(dt)
     
   elseif gameState == Encontro then
@@ -81,7 +90,7 @@ function love.draw()
     love.graphics.setFont(default_font)
 		phase_draw()
     currentstatsHUD()
-    hitboxer.draw()
+
     
     animasample.draw()
     
@@ -101,6 +110,8 @@ function love.draw()
     
     --JOGADOR PROTOTIPO DE ANIMAÇÃO
     animasample.drawB()
+    
+    
     
   end
   

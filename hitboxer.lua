@@ -1,44 +1,47 @@
 hitboxer={}
-function hitboxer.draw()
-  hitbox=love.graphics.newImage('floor/hitboxphase1.png')
-  love.graphics.draw(hitbox,phase.x,phase.y)
-end 
-currentMap = {}
+r={}
+function hitboxer.load()
+  walkingWarrior=love.graphics.newImage('iconplayer/animaWarrior/chrono_sample.png')
+  map=love.image.newImageData('floor/hitbox1.png')
 
-function add_tile(x,y,type)
-        table.insert(currentMap, {x=x,y=y,type=type}) -- Adds a tile to the currentMap Table
-end
- 
-function read_map()
-        map = love.image.newImageData("floor/hitboxphase1.png")
-        for scanX = 1, map:getWidth()-1 do
-              for scanY = 1, map:getHeight()-1 do
-                        r,g,b,a = map:getPixel(scanX, scanY) -- Returns the R G B A value from the image data
-                        if r==255 then
-                                add_tile(scanX, scanY, "color")
-                        else
-                                add_tile(scanX, scanY, "black")
-                        end
-                end
-        end
+  player.height=walkingWarrior:getHeight()/4
+  player.width=walkingWarrior:getWidth()/4
+  teste=love.graphics.newImage('floor/hitboxphase1.png')
+  up_l=love.graphics.newImage('floor/uper_image.png')
+  
 end
 
-function hitboxer.update(dt)
-        for i,v in ipairs(currentMap) do -- I = index, V = value. This for loop iterates over the currentmap table to return values to be used
-          --A colisão ainda não tem a hitbox apropriada, mas eu só quero que execute por enquanto. Depois eu ajeito
-                if v.type == "color" then
-                        player.uVel = 0 -- CIMA
-                        player.rVel = 0 -- DIREITA
-                        player.dVel = 0 -- BAIXO
-                        player.lVel = 0 -- ESQUERDA
-                        
-                      elseif v.type=="black" then
-                        player.vel=100
-                        player.uVel = player.vel -- CIMA
-                        player.rVel = player.vel -- DIREITA
-                        player.dVel = player.vel -- BAIXO
-                        player.lVel = player.vel -- ESQUERDA
-                        
-                end
-        end
+function hitboxer.update()
+  r[1],g,b,a=map:getPixel(player.x-phase.x+player.width/4,       player.y-phase.y)
+  r[2],g,b,a=map:getPixel(player.x-phase.x+player.width/4,       player.y-phase.y+player.height/2+10)
+  r[3],g,b,a=map:getPixel(player.x-phase.x,                      player.y-phase.y+player.height/4)
+  r[4],g,b,a=map:getPixel(player.x-phase.x+player.width/2,         player.y-phase.y+player.height/4)
+  if r[1]==255 then
+    player.uVel=0
+  else
+    player.uVel=player.vel
+  end
+  
+  if r[2]==255 then
+    player.dVel=0
+  else
+    player.dVel=player.vel
+  end
+  
+  if r[3]==255 then
+    player.lVel=0
+  else
+    player.lVel=player.vel
+  end
+  
+  if r[4]==255 then
+    player.rVel=0
+  else
+    player.rVel=player.vel
+  end
+
 end
+function uperlayer_draw()
+  love.graphics.draw(up_l,phase.x,phase.y)
+end
+

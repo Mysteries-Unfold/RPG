@@ -6,7 +6,7 @@ function player_load()
 
 	
 
-	player.x 	= love.graphics.getWidth() / 2 - 32
+	player.x 	= love.graphics.getWidth() / 2 
 	player.y 	= love.graphics.getHeight() / 2 - 32
   
   player.chicken = false   -- if the user is chicken
