@@ -44,7 +44,7 @@ function phase_update(dt)
 
 	if phase.state == phase1 then
     
-    if (enemies["phase1"][1].alive) and (not player.chicken) and (player.x+32>= 290) and (player.x<=290+(37.5)) and (player.y+32>= 400) and (player.y<=400+(41))then
+    if (enemies["phase1"][1].alive) and (not player.chicken) and (player.x+32>= 400) and (player.x<=400+(37.5)) and (player.y+32>= 200) and (player.y<=200+(41))then
       encontro.load()
       encontro.setPlayers(player, enemies["phase1"][1], phase.state)  --pass the player, enemy, and phase state to the encontro
       gameState = 3
@@ -57,46 +57,6 @@ function phase_update(dt)
       cachang:play()
 
 		end
-
-	end
-
-	if player.y < phase.y then
-
-		player.uVel = 0
-
-	else
-
-		player.uVel = player.vel
-
-	end
-
-	if player.w > phase.w then
-
-		player.rVel = 0
-	
-	else
-
-		player.rVel = player.vel
-
-	end
-
-	if player.h > phase.h then
-
-		player.dVel = 0
-	
-	else
-
-		player.dVel = player.vel
-
-	end
-
-	if player.x < phase.x then
-
-		player.lVel = 0
-	
-	else
-
-		player.lVel = player.vel
 
 	end
 
@@ -123,7 +83,7 @@ function phase_draw()
 		love.graphics.setColor(255, 255, 255)
 		love.graphics.print('Phase 1', 480 - 30, 40)
     --fundo da fase 1
-    love.graphics.draw(phase.background1,phase.x,phase.y,0,1.37,1.37)
+    love.graphics.draw(phase.background1,phase.x,phase.y,0,1.25,1.25)
 		love.graphics.setColor(255, 255, 255)
     -- saída
 		love.graphics.draw(phase.exit1, ext.x-23, ext.y-23,0,0.2,0.2)

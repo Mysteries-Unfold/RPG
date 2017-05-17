@@ -13,40 +13,48 @@ function chooseclass.load()             --load the classes
   archer                  = {}          --archer class
   archer.image            = love.graphics.newImage("iconplayer/archer.jpg") 
   archer.hp               = 4           --hp
+  archer.mp               = 2
   archer.atk              = 10          --atk
   archer.spatk            = 5           --sp atk
   archer.def              = 2           --def
   archer.spd              = 7           --spd
+  archer.spdef            = 0           --sp def
   archer.selected         = true        --indicates if the user is selecting it
   table.insert(classes, archer)         --adds the class to the classes table  
   
   warrior                 = {}          --warrior class
   warrior.image           = love.graphics.newImage("iconplayer/saber.jpg")
   warrior.hp              = 5           --hp
+  warrior.mp              = 1
   warrior.atk             = 8           --atk
   warrior.spatk           = 3           --sp atk
   warrior.def             = 10          --def
   warrior.spd             = 2           --spd
+  warrior.spdef           = 0           --sp def
   warrior.selected        = false       --indicates if the user is selecting it      
   table.insert(classes, warrior)        --adds the class to the classes table
   
   mage                    = {}          --mage class 
   mage.image              = love.graphics.newImage("iconplayer/sorcerer.jpg")
   mage.hp                 = 7           --hp
+  mage.mp                 = 10 
   mage.atk                = 3           --atk
   mage.spatk              = 10          --sp atk 
   mage.def                = 5           --def
   mage.spd                = 3           --spd
+  mage.spdef              = 0           --sp def
   mage.selected           = false       --indicates if the user is selecting it
   table.insert(classes, mage)           --adds the class to the classes table
   
   thief                   = {}          --thief class
   thief.image             = love.graphics.newImage("iconplayer/thief.jpg")
   thief.hp                = 3           --hp
+  thief.mp                = 1
   thief.atk               = 7           --atk
   thief.spatk             = 2           --sp atk
   thief.def               = 6           --def
   thief.spd               = 10          --spd
+  thief.spdef             = 0           --sp def
   thief.selected          = false       --indicates if the user is selecting it
   table.insert(classes, thief)          --adds the class to the classes table
   
@@ -78,7 +86,9 @@ function chooseclass.keyEnter(key)
       player.image = warrior.image    --load the warrior image
       
     end  
+    
     player.icon=love.graphics.newQuad(50,100,650,1090,player.image:getDimensions())
+    player.currentstatsload()
   end
 end
 

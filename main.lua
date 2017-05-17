@@ -8,10 +8,13 @@ require('playericons')
 require('chooseclass')
 require('encontro')
 require('enemies')
-
+require('currentstats')
+require('pause')
+require('ANIMsample')
+require('ANIMenemies')
+require('ANIMarmed')
+require('hitboxer')
 function love.load()
-  --
-  pause = false
   -- icones de jogadores, futuramente spritesheets
   icons.load()
   -- fonte padrão chamada em lugares onde ela é necessária
@@ -25,14 +28,25 @@ function love.load()
 	gameState = 0
 	phase_load()
   chooseclass.load()
+  pause.load()
+  
+  --PROTOTIPO DE ANIMAÇÃO
+  ANImy.load()
+  animasample.load()
+  
+  
+  
+  --hitbox
+  hitboxer.load()
+  
 
 end
 
 
 function love.update(dt)
   
-  if pause then
-
+  if pause.state then
+    pause.update(dt)
 	elseif gameState == mainMenu then
     
   elseif gameState == chooseclass.state then
@@ -41,8 +55,24 @@ function love.update(dt)
 
 		phase_update(dt)
     
+    
+    
+    
+    --hitbox
+    hitboxer.update()
+    
+    
+    --animação
+    animasample.update(dt)
+    
   elseif gameState == Encontro then
+    encontro.update(dt)
+    --PROTOTIPO DE ANIMAÇÃO
+    ANImy.update(dt)
+    
 
+    direita:update(dt)
+    
 	end
 
 end
@@ -60,21 +90,34 @@ function love.draw()
 	elseif gameState == inGame then
     love.graphics.setFont(default_font)
 		phase_draw()
+    currentstatsHUD()
+
+    
+    animasample.draw()
     
   elseif gameState == Encontro then
+    
     love.graphics.setFont(default_font)
+    
+    --CAIXAS
 		encontro.draw()
+    
+    --INIMIGO PROTOTIPO DE ANIMAÇÃO
+    ANImy.draw()
+    
+    
+    --BARRAS DE HP/MP
+    --battleHUD()
+    
+    --JOGADOR PROTOTIPO DE ANIMAÇÃO
+    animasample.drawB()
+    
+    
     
   end
   
-  if pause then
-    local w, h = love.graphics.getWidth() , love.graphics.getHeight()          --get width and height of window
-    love.graphics.setColor(11, 104, 70)                                          --set color
-    love.graphics.rectangle("fill", (w/2)-(w/6)-(w/100), (h/2)-(h*3/10)-(h/100)-(h/200), (w/3)+(w/50), (h*3/5)+(h*3/100)) --draw pause box
-    love.graphics.setColor(5, 43, 29)
-    love.graphics.rectangle("fill", (w/2) - (w/6) , (h/2)-(h*3/10),  w/3, h/5)
-    love.graphics.rectangle("fill", (w/2) - (w/6) , (h/2)-(h*3/10)+(h/5)+(h/200),  w/3, h/5)
-    love.graphics.rectangle("fill", (w/2) - (w/6) , (h/2)-(h*3/10)+(h*2/5)+(h/100),  w/3, h/5)
+  if pause.state then
+    pause.draw()
   end
 
 
@@ -82,36 +125,33 @@ end
 
 
 function love.keypressed(key)
-  
-  if key == 'p' then
+  if pause.state then
     
-    pause = not pause
+    pause.select(key)
+  
+  end
+  
+  if key == 'p' and gameState==inGame then
+    
+    pause.state = not pause.state
 
-	elseif gameState == mainMenu and not pause then
+  elseif gameState == mainMenu and not pause.state then
 
 		mainmenu_select(key)
     
-  elseif gameState == chooseclass.state and not pause then
-    
+  elseif gameState == chooseclass.state and not pause.state then
     chooseclass.keypressed(key)
     chooseclass.keyEnter(key)
     
-  elseif gameState == inGame and not pause then
+  elseif gameState == inGame and not pause.state then
     
     phase.keypressed(key)  --pass the keyboard input to the phase 
     
-  elseif gameState == Encontro and not pause then
+  elseif gameState == Encontro and not pause.state then
     
     encontro.keypressed(key)
 	
   end
 
-  --Volta ao menu
-	if key == 'escape' and gameState ~= mainMenu then
-
-			gameState = 0
-      love.load()
-
-	end
 
 end
