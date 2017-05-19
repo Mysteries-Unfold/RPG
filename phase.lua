@@ -51,12 +51,6 @@ function phase_update(dt)
      
     end
 
-		if player.w > ext.x and player.y < ext.h then
-
-			phase.state = 2
-      cachang:play()
-
-		end
 
 	end
 
@@ -83,7 +77,7 @@ function phase_draw()
 		love.graphics.setColor(255, 255, 255)
 		love.graphics.print('Phase 1', 480 - 30, 40)
     --fundo da fase 1
-    love.graphics.draw(phase.background1,phase.x,phase.y,0,1.25,1.25)
+    love.graphics.draw(phase.background1,phase.x,phase.y,0)
 		love.graphics.setColor(255, 255, 255)
     -- saída
 		love.graphics.draw(phase.exit1, ext.x-23, ext.y-23,0,0.2,0.2)

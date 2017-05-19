@@ -66,6 +66,7 @@ function love.update(dt)
     animasample.update(dt)
     
   elseif gameState == Encontro then
+    encontro.update(dt)
     --PROTOTIPO DE ANIMAÇÃO
     ANImy.update(dt)
     
@@ -106,7 +107,7 @@ function love.draw()
     
     
     --BARRAS DE HP/MP
-    battleHUD()
+    --battleHUD()
     
     --JOGADOR PROTOTIPO DE ANIMAÇÃO
     animasample.drawB()

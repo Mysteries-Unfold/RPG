@@ -2,7 +2,7 @@
 player = {}
 function player_load()
   
-  player.skills = {}
+  player.skills = {{name="punch", typ="atk", cooldown="0", damage="5", color={0, 201, 87}}, {name="kick", typ="atk", cooldown="2", damage="7", color={255, 97, 3}}, {name="splash", typ="atk", cooldown="0", damage="0", color={0, 205, 205}}}
 
 	
 
@@ -21,19 +21,10 @@ function player_load()
 
 end
 
-function player_flee(inimigo)
-  
-  player.x = player.x + inimigo.
-  
-  matrix[x][y]
-  
-end
+
 
 
 function player_update(dt)
-
-	player.w = player.x + 32 -- Player.x + comprimento de player
-	player.h = player.y + 32 -- Player.y + altura de player
 
 	-- Walk
 	

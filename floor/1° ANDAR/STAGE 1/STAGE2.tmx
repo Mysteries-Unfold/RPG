@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="treasurechest01" tilewidth="16" tileheight="16" tilecount="384" columns="24">
+  <image source="../../../../../../OneDrive/Imagens/TILESETmodel/treasurechest01.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="385" name="POKEMON" tilewidth="16" tileheight="16" tilecount="2912" columns="52">
+  <image source="../../../../../../OneDrive/Imagens/TILESETmodel/POKEMON.png" width="832" height="896"/>
+ </tileset>
+ <tileset firstgid="3297" name="zelda3" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="../../../../../../OneDrive/Imagens/TILESETmodel/zelda3.png" width="480" height="256"/>
+ </tileset>
+ <layer name="Chão" width="12" height="12">
+  <data encoding="csv">
+491,491,491,491,491,491,491,568,569,569,569,569,
+491,491,491,491,491,491,491,568,569,569,569,569,
+491,491,491,1226,1226,491,491,568,569,569,569,569,
+491,491,491,1226,1226,491,491,568,569,569,569,569,
+491,491,491,491,491,491,491,568,569,569,569,569,
+1226,491,491,491,491,491,491,620,621,621,621,621,
+1226,1226,491,491,491,491,491,491,491,491,491,491,
+491,491,1226,491,491,491,491,491,491,491,491,491,
+491,491,1226,1226,491,491,491,491,491,491,491,491,
+491,491,1226,1226,1226,1226,1226,1226,491,491,491,491,
+491,491,491,491,491,491,491,491,1226,491,491,491,
+1226,1226,1226,1226,1226,1226,1226,491,1226,491,1226,1226
+</data>
+ </layer>
+ <layer name="Arvores" width="12" height="12" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

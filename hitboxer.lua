@@ -2,7 +2,7 @@ hitboxer={}
 r={}
 function hitboxer.load()
   walkingWarrior=love.graphics.newImage('iconplayer/animaWarrior/chrono_sample.png')
-  map=love.image.newImageData('floor/hitbox1.png')
+  map=love.image.newImageData('floor/E2_hitbox.png')
 
   player.height=walkingWarrior:getHeight()/4
   player.width=walkingWarrior:getWidth()/4
@@ -12,10 +12,17 @@ function hitboxer.load()
 end
 
 function hitboxer.update()
-  r[1],g,b,a=map:getPixel(player.x-phase.x+player.width/4,       player.y-phase.y)
-  r[2],g,b,a=map:getPixel(player.x-phase.x+player.width/4,       player.y-phase.y+player.height/2+10)
-  r[3],g,b,a=map:getPixel(player.x-phase.x,                      player.y-phase.y+player.height/4)
-  r[4],g,b,a=map:getPixel(player.x-phase.x+player.width/2,         player.y-phase.y+player.height/4)
+  
+  
+  --cima
+  r[1],g,b,a=map:getPixel(player.x-phase.x+player.width/4,    player.y-phase.y)
+  --baixo
+  r[2],g,b,a=map:getPixel(player.x-phase.x+player.width/4,    player.y-phase.y+player.height/2+10)
+  --direita
+  r[3],g,b,a=map:getPixel(player.x-phase.x,                   player.y-phase.y+player.height/4)
+  --esquerda
+  r[4],g,b,a=map:getPixel(player.x-phase.x+player.width/2,    player.y-phase.y+player.height/4)
+  
   if r[1]==255 then
     player.uVel=0
   else
