@@ -22,7 +22,7 @@ function love.load()
   -- efeitos sonoros
   SFX.load()
   -- fundos e objetos
-  --objeto.load()
+  objeto.load()
   --estados de jogo/fases
 	mainMenu, chooseclass.state, inGame, Encontro = 0, 1, 2, 3
 	gameState = 0
