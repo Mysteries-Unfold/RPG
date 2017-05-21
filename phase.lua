@@ -1,17 +1,58 @@
 
 
 require('player')
+require('enemies')
 
-phase = {}
+phase   = {}
+floor   = {}
+section = {}
 
+floor.image  = {}
+floor.hitbox = {}
 
-function phase.load()
+floor.state   = 1 -- First Floor
+section.state = 3 -- First Section
+
+function phase_load()
+
+	for i = 1, 1 do -- i = 1, 12
+		
+		floor.image[i] = {}
+		
+		for j = 1, 64 do
+
+			local f = io.open('C:/Users/User/Desktop/MyProjects/Love Projects/RPG---Mysteries-Unfold-Pinto/background/floor1/sprite/' .. j .. '.png', 'r')
+
+			if f ~= nil then
+
+				floor.image[i][j] = love.graphics.newImage('background/floor1/sprite/' .. j .. '.png')
+
+			end
+
+		end
+
+	end
+
+	for i = 1, 1 do -- i = 1, 12
+		
+		floor.hitbox[i] = {}
+		
+		for j = 1, 64 do
+
+			local f = io.open('C:/Users/User/Desktop/MyProjects/Love Projects/RPG---Mysteries-Unfold-Pinto/background/floor1/hitbox/' .. j .. '.png', 'r')
+
+			if f ~= nil then
+
+				floor.hitbox[i][j] = tostring('background/floor1/hitbox/' .. j .. '.png')
+
+			end
+			
+		end
+
+	end
 
   	title_font = love.graphics.newFont(40)
-
-	player.load()
-
-	pause.load()
+	player_load()
 	
 	phase1, phase2 = 1, 2
 
@@ -22,136 +63,65 @@ function phase.load()
 	phase.w   	= phase.x + 480 -- Phase.x + comprimento de phase
 	phase.h   	= phase.y + 480 -- Phase.y + altura de phase
 
-	ext = {}
-
-	ext.x = phase.x + 480 - 32
-	ext.y = phase.y
-	ext.w = ext.x + 32
-	ext.h = ext.y + 32
-
 end
 
 -- Todas as colisões
-function phase.update(dt)
+function phase_update(dt)
 
-	if pause.state then
+	player_update(dt)
+  
+  	if player.chicken then   --if the user is chicken
+   		
+   		player.chicken_time = player.chicken_time + dt  --adds chicken time
+    	
+    	if player.chicken_time >= 3 then                 --if it already chicken for 3 seconds
+      	
+      		player.chicken = false                        --its not chicken anymore
+      		player.chicken_time = 0                       --resets chicken time
+    	
+    	end
 
-		pause.update(dt)
-	
-	else		
+  	end
 
-		player.update(dt)
-
-		if phase.state == phase1 then
-
-			if player.w > ext.x and player.y < ext.h then
-
-				phase.state = 2
-      			cachang:play()
-
-			end
-
-		end
-
-		if player.y < phase.y then
-
-			player.uVel = 0
-
-		else
-
-			player.uVel = player.vel
-
-		end
-
-		if player.w > phase.w then
-
-			player.rVel = 0
-	
-		else
-
-			player.rVel = player.vel
-
-		end
-
-		if player.h > phase.h then
-
-			player.dVel = 0
-	
-		else
-
-			player.dVel = player.vel
-
-		end
-
-		if player.x < phase.x then
-
-			player.lVel = 0
-	
-		else
-
-			player.lVel = player.vel
-
-		end
+	if phase.state == phase1 then
+    
+    	if (enemies["phase1"][1].alive) and (not player.chicken) and (player.x+32>= 290) and (player.x<=290+(37.5)) and (player.y+32>= 400) and (player.y<=400+(41))then
+      		
+      		encontro.load()
+      		encontro.setPlayers(player, enemies["phase1"][1], phase.state)  --pass the player, enemy, and phase state to the encontro
+      		gameState = 3
+     
+    	end
 
 	end
 
 end
+
 
 function phase.keypressed(key)
-
-	if pause.state then
-
-		pause.select(key)
-
-	end
-
-	if key == 'p' then
-
-		pause.state = true
-
-	end
   
-  	if key == "b" then
+  if key == "b" then
 
-    	encontro.load()
-    	encontro.setPlayers(player, nil, phase.state)  --pass the player, enemy, and phase state to the encontro
-    	gameState = 3
-    
-  	end
-  
+    encontro.load()
+    encontro.setPlayers(player, nil, phase.state)  --pass the player, enemy, and phase state to the encontro
+    gameState = 3
+     
+  end
+
 end
 
 
-function phase.draw()
+function phase_draw()
 
-	--fundo da fase 1
-	if phase.state == phase1 then 
+	local w, h = love.graphics.getWidth(), love.graphics.getHeight()
+		
+	love.graphics.draw(floor.image[floor.state][section.state], w/4, h/7, 0, 2.5)
 
-		love.graphics.setColor(255, 255, 255)
-		love.graphics.print('Phase 1', 480 - 30, 40)
+    --draw the enemy (to debug)
+    love.graphics.draw(enemies["phase1"][1].alive_image, enemies["phase1"][1].x, enemies["phase1"][1].y,0,0.05, 0.05)
 
-    	love.graphics.draw(phase.background1,phase.x,phase.y,0,1.37,1.37)
-		love.graphics.setColor(255, 255, 255)
-		love.graphics.draw(phase.exit1, ext.x-23, ext.y-23,0,0.2,0.2) -- saída
-
-	--fundo da fase 2/objetos da fase
-	elseif phase.state == phase2 then
-
-		love.graphics.setColor(255, 255, 255)
-		love.graphics.print('Phase 2', 480 - 30, 40)
-
-    	love.graphics.setColor(255, 255, 255)
-    	love.graphics.draw(phase.background2, phase.x, phase.y,0,0.48,0.65)
-
-	end
-
-	player.draw() 
-
-	if  pause.state then
-
-		pause.draw()
-
-	end
+	player_draw()
 
 end
+
 
