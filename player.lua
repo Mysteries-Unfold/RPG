@@ -1,17 +1,17 @@
 
+
 player = {}
+
 function player_load()
   
-  player.skills = {{name="punch", typ="atk", cooldown="0", damage="5", color={0, 201, 87}}, {name="kick", typ="atk", cooldown="2", damage="7", color={255, 97, 3}}, {name="splash", typ="atk", cooldown="0", damage="0", color={0, 205, 205}}}
-
-	
+    player.skills = {}
 
 	player.x 	= love.graphics.getWidth() / 2 
 	player.y 	= love.graphics.getHeight() / 2 - 32
   
-  player.chicken = false   -- if the user is chicken
-  player.chicken_time = 0  --time he is chicken
-  player.chicken_image = love.graphics.newImage("iconplayer/chicken_normal.png")
+  	player.chicken = false   -- if the user is chicken
+  	player.chicken_time = 0  --time he is chicken
+  	player.chicken_image = love.graphics.newImage("iconplayer/chicken_normal.png")
 
 	player.vel 	= 100
 	player.uVel = player.vel -- CIMA
@@ -21,10 +21,19 @@ function player_load()
 
 end
 
-
+function player_flee(inimigo)
+  
+  player.x = player.x + inimigo.
+  
+  matrix[x][y]
+  
+end
 
 
 function player_update(dt)
+
+	player.w = player.x + 32 -- Player.x + comprimento de player
+	player.h = player.y + 32 -- Player.y + altura de player
 
 	-- Walk
 	
@@ -32,15 +41,21 @@ function player_update(dt)
 
 		player.y = player.y - player.uVel * dt
 
-	elseif love.keyboard.isDown('s') then
+	end
+
+	if love.keyboard.isDown('s') then
 
 		player.y = player.y + player.dVel * dt
 
-	elseif love.keyboard.isDown('d') then
+	end
+
+	if love.keyboard.isDown('d') then
 
 		player.x = player.x + player.rVel * dt
 
-	elseif love.keyboard.isDown('a') then
+	end
+
+	if love.keyboard.isDown('a') then
 
 		player.x = player.x - player.lVel * dt
 
@@ -50,8 +65,11 @@ end
 
 
 function player_draw()
+
   love.graphics.setColor(255,255,255)
+
   if player.chicken then
+  	
     love.graphics.draw(player.chicken_image,player.icon,player.x,player.y,0,0.05,0.02)
   
   else

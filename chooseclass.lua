@@ -1,5 +1,9 @@
+
+
 --CHOOSE CLASS SCREEN--
 chooseclass={}
+
+
 function chooseclass.load()             --load the classes
   
   --settings
@@ -62,10 +66,16 @@ function chooseclass.load()             --load the classes
 
 end
 
+
 function chooseclass.update(dt)
   
+
+
 end
+
+
 function chooseclass.keyEnter(key)
+  
   if key=='return' then               --if the user selected the class, start the game
     gameState = 2
     --check which class os the selected one, and then loads the class image
@@ -89,7 +99,9 @@ function chooseclass.keyEnter(key)
     
     player.icon=love.graphics.newQuad(50,100,650,1090,player.image:getDimensions())
     player.currentstatsload()
+
   end
+  
 end
 
 function chooseclass.keypressed(key)
