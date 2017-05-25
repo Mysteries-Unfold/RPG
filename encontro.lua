@@ -224,9 +224,8 @@ endBattle = function (flee)
   if flee then                              --check if the battle ended because the player fled
     player.chicken = true
   else
-    local enemytt = enemies["phase1"][1]
-    enemies["phase1"][1].alive_image, enemies["phase1"][1].dead_image = enemies["phase1"][1].dead_image, enemies["phase1"][1].alive_image
-    enemies["phase1"][1].alive = false
+    enemies_table["phase1"][1].alive_image, enemies_table["phase1"][1].dead_image = enemies_table["phase1"][1].dead_image, enemies_table["phase1"][1].alive_image
+    enemies_table["phase1"][1].alive = false
   end
   
   player, enemy      = nil, nil             --resets player anf enemy values
@@ -337,6 +336,6 @@ encontro.draw = function ()
     love.graphics.rectangle("fill",  w/4, h*3/4, w*3/4, h/4)  --draw the filter
   end
   
-  love.graphics.print(tostring(encontro.teste), 0, 0, 0)
+  --love.graphics.print(tostring(encontro.teste), 0, 0, 0)
 end
 --end
