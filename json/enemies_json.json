@@ -1,0 +1,19 @@
+{
+  "phase1":[{
+      "x":400,
+      "skills":[],
+      "alive_image":"iconplayer/otaco.png",
+      "y":200,
+      "hp":10,
+      "sx":1,
+      "dead_image":"iconplayer/rip.png",
+      "spdef":2,
+      "alive":true,
+      "spatk":1,
+      "index":1,
+      "sy":1,
+      "atk":7,
+      "def":4,
+      "spd":2
+    }]
+}

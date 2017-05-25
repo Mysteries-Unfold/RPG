@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="2017.05.16" orientation="orthogonal" renderorder="right-down" width="5" height="5" tilewidth="192" tileheight="192" nextobjectid="1">
+ <tileset firstgid="1" source="A1.tsx"/>
+ <tileset firstgid="2" source="A5.tsx"/>
+ <tileset firstgid="3" source="B1.tsx"/>
+ <tileset firstgid="4" source="B2.tsx"/>
+ <tileset firstgid="5" source="B3.tsx"/>
+ <tileset firstgid="6" source="B5.tsx"/>
+ <tileset firstgid="7" source="C1.tsx"/>
+ <tileset firstgid="8" source="C2.tsx"/>
+ <tileset firstgid="9" source="C3.tsx"/>
+ <tileset firstgid="10" source="C4.tsx"/>
+ <tileset firstgid="11" source="C5.tsx"/>
+ <tileset firstgid="12" source="D1.tsx"/>
+ <tileset firstgid="13" source="D2.tsx"/>
+ <tileset firstgid="14" source="D3.tsx"/>
+ <tileset firstgid="15" source="D4.tsx"/>
+ <tileset firstgid="16" source="D5.tsx"/>
+ <tileset firstgid="17" source="E1.tsx"/>
+ <tileset firstgid="18" source="E2.tsx"/>
+ <tileset firstgid="19" source="E3.tsx"/>
+ <tileset firstgid="20" source="E4.tsx"/>
+ <tileset firstgid="21" source="E5.tsx"/>
+ <layer name="Camada de Tiles 1" width="5" height="5">
+  <data encoding="csv">
+1,0,0,0,2,
+3,4,5,0,6,
+7,8,9,10,11,
+12,13,14,15,16,
+17,18,19,20,21
+</data>
+ </layer>
+</map>
