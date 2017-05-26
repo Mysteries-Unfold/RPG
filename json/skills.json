@@ -1,0 +1,94 @@
+{
+	"a1": {
+		"name"			: "Great Strike", 
+		"cooldown"		: 0, 
+		"atribute"		: "Weapon",
+		"dmg_type"		: "Weapon", 
+		"weapon"			: null,
+		"stat"			: "Physical",
+		"damage"			: 1.5,
+		"effect"			: null,
+		"charged"		: "Hold back ('A') and release at the right time"
+	},
+	"b": {
+			"1": {
+				"name"	      : "Adrenaline Rush", 
+				"cooldown"     : 2, 
+				"atribute"     : "Weapon",
+				"dmg_type"     : "Weapon", 
+				"weapon"	      : "Military",
+				"stat"	      : "Physical",
+				"damage"	      : 0,
+				"effect"	      : "Your next basic attack will heal by the damage dealt",
+				"charged"      : "Hit Interact ('A') when conectig basic attack"
+			},
+			"2": {
+				"1":{
+					"name"	      : "Sweep Strike", 
+					"cooldown"     : 2, 
+					"atribute"     : "Weapon",
+					"dmg_type"     : "Weapon", 
+					"weapon"	      : "Great",
+					"stat"	      : "Physical",
+					"damage"	      : 2,
+					"effect"	      : "You can choose 2 targets instead of one",
+					"charged"      : "Alternate between 'a' and 'd'"
+				},
+				"2":{
+					"name"	      : "Stun Strike", 
+					"cooldown"     : 4, 
+					"atribute"     : "Weapon",
+					"dmg_type"     : "Bludgeon", 
+					"weapon"	      : "Great",
+					"stat"	      : "Physical",
+					"damage"	      : 2,
+					"effect"	      : "Target may be unable to take action for 2 turns (target will still use basic attack)",
+					"charged"      : "Hold and Release (' ') when prompt, then hit interact when connecting"
+				},
+				"3":{
+					"name"	      : "Elemental Strike", 
+					"mana"         : "low", 
+					"atribute"     : "Fire",
+					"dmg_type"     : "Weapon", 
+					"weapon"	      : "Military/compact",
+					"stat"	      : "Physical",
+					"damage"	      : 2.5,
+					"effect"	      : null,
+					"charged"      : "Hold and Release interact(' ') when prompt"
+				},
+				"4":{
+					"name"	      : "Second Wind", 
+					"cooldown"     : 5, 
+					"atribute"     : "Fire",
+					"dmg_type"     : "Weapon", 
+					"weapon"	      : null,
+					"stat"	      : "Physical",
+					"damage"	      : 2.5,
+					"effect"	      : "Heal 30% of max HP",
+					"charged"      : "Hit interact(' ') in the correct timing three times"
+				},
+				"5":{
+					"name"	      : "Streak", 
+					"cooldown"     : 4, 
+					"atribute"     : "Weapon",
+					"dmg_type"     : "Weapon", 
+					"weapon"	      : "Military",
+					"stat"	      : "Physical",
+					"damage"	      : 3,
+					"effect"	      : null,
+					"charged"      : "Hit interact in the correct timing, being able to attack again, with another timing, attacking again for each time its hit",
+				},
+				"6":{
+					"name"	      : "Berserk", 
+					"mana"         : "med", 
+					"atribute"     : "Weapon",
+					"dmg_type"     : "Weapon", 
+					"weapon"	      : "Military",
+					"stat"	      : "Physical",
+					"damage"	      : 3,
+					"effect"	      : "You will auto equip the weapon 'fist', for the duration of the skill, always atttacking twice, and healing 5% of the max HP",
+					"charged"      : "Hit interact in the correct timing, being able to attack again, with another timing, attacking again for each time its hit",
+				}
+			}
+	}
+}

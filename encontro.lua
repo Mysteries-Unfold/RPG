@@ -1,3 +1,5 @@
+require('skills')     --require skills table form skills.lua
+
 encontro = {}
 encontro.teste="none" --for debug
 encontro.turn = 0     --turn of the batlle
@@ -16,6 +18,9 @@ local cooldown_font
 local w, h = love.graphics.getWidth(), love.graphics.getHeight()
   
 encontro.load = function ()
+  
+  skills.load()
+  
   background = {}
   local background1 = love.graphics.newImage("battle/background/background-teste.jpg")
   table.insert(background, background1)
