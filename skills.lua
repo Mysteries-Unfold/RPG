@@ -14,6 +14,7 @@ skills.load = function ()
   
   file:close()                                    --closes file
   
+  
   --[[
   for key, val in pairs(tabl['b']['2']) do
     
