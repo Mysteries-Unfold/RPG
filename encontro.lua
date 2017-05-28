@@ -1,3 +1,5 @@
+require('skills')     --require skills table form skills.lua
+
 encontro = {}
 encontro.teste="none" --for debug
 encontro.turn = 0     --turn of the batlle
@@ -16,6 +18,9 @@ local cooldown_font
 local w, h = love.graphics.getWidth(), love.graphics.getHeight()
   
 encontro.load = function ()
+  
+  skills.load()
+  
   background = {}
   local background1 = love.graphics.newImage("battle/background/background-teste.jpg")
   table.insert(background, background1)
@@ -224,9 +229,8 @@ endBattle = function (flee)
   if flee then                              --check if the battle ended because the player fled
     player.chicken = true
   else
-    local enemytt = enemies["phase1"][1]
-    enemies["phase1"][1].alive_image, enemies["phase1"][1].dead_image = enemies["phase1"][1].dead_image, enemies["phase1"][1].alive_image
-    enemies["phase1"][1].alive = false
+    enemies_table["phase1"][1].alive_image, enemies_table["phase1"][1].dead_image = enemies_table["phase1"][1].dead_image, enemies_table["phase1"][1].alive_image
+    enemies_table["phase1"][1].alive = false
   end
   
   player, enemy      = nil, nil             --resets player anf enemy values

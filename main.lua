@@ -2,27 +2,26 @@ require('mainmenu')
 require('phase')
 require('player')
 require('phase')
-require('objectimage')
-require('SFX')
-require('playericons')
+require('SFX/SFX')
 require('chooseclass')
 require('encontro')
 require('enemies')
 require('currentstats')
 require('pause')
-require('ANIMsample')
-require('ANIMenemies')
-require('ANIMarmed')
+require('Animations/ANIMsample')
+require('Animations/ANIMenemies')
+require('Animations/ANIMarmed')
 require('hitboxer')
+require('skill_tree/SkillTreeMove')
+
 function love.load()
-  -- icones de jogadores, futuramente spritesheets
-  icons.load()
+  
   -- fonte padrão chamada em lugares onde ela é necessária
   default_font=love.graphics.newFont(14)
+  
   -- efeitos sonoros
   SFX.load()
-  -- fundos e objetos
-  objeto.load()
+  
   --estados de jogo/fases
 	mainMenu, chooseclass.state, inGame, Encontro = 0, 1, 2, 3
 	gameState = 0
@@ -34,11 +33,11 @@ function love.load()
   ANImy.load()
   animasample.load()
   
-  
-  
   --hitbox
   hitboxer.load()
   
+  --skill_tree
+  skill_tree_load()
 
 end
 
@@ -55,22 +54,19 @@ function love.update(dt)
 
 		phase_update(dt)
     
-    
-    
-    
     --hitbox
-    hitboxer.update()
-    
+    hitboxer.update(dt)
     
     --animação
     animasample.update(dt)
     
   elseif gameState == Encontro then
+    
     encontro.update(dt)
+    
     --PROTOTIPO DE ANIMAÇÃO
     ANImy.update(dt)
-    
-
+  
     direita:update(dt)
     
 	end
@@ -117,7 +113,16 @@ function love.draw()
   end
   
   if pause.state then
+    
     pause.draw()
+    
+    if selecting_skills then
+      
+      love.graphics.setColor(255,255,255)
+      skill_tree_draw()
+      love.graphics.setColor(55,55,55)
+      
+    end
   end
 
 
@@ -125,10 +130,14 @@ end
 
 
 function love.keypressed(key)
-  if pause.state then
+  if selecting_skills then
+    
+      skill_tree_keypressed(key)
+      
+  elseif pause.state then
     
     pause.select(key)
-  
+    
   end
   
   if key == 'p' and gameState==inGame then

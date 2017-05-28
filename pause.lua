@@ -70,7 +70,7 @@ function pause.select(key)
 
 		elseif pause.selected == 1 then 
 
-		-- go to skill tree
+      selecting_skills=true
 
 		elseif pause.selected == 2 then
 
